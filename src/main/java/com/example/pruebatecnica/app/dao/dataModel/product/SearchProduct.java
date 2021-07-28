@@ -1,20 +1,20 @@
 package com.example.pruebatecnica.app.dao.dataModel.product;
 
-import com.example.pruebatecnica.app.dao.models.UserApp;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.pruebatecnica.app.dao.dataModel.user.UserDto;
+import lombok.*;
+
+import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class SearchProduct {
 
-    private int id;
+    private Date startDate;
 
     private String name;
 
-    private UserApp user;
+    private UserDto user;
 }

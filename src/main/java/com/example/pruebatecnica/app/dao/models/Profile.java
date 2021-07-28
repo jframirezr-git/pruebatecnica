@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,6 +19,7 @@ public class Profile implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "profile")
+    /*@OneToMany(mappedBy = "profile")
     List<UserApp> users;
+    */
 }

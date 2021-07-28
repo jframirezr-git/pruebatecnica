@@ -1,8 +1,10 @@
 package com.example.pruebatecnica.app.dao;
 
+import com.example.pruebatecnica.app.dao.dataModel.user.SearchUser;
 import com.example.pruebatecnica.app.dao.models.UserApp;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface DaoUser {
@@ -16,10 +18,10 @@ public interface DaoUser {
 
     /**
      * Search user
-     * @param user
+     * @param userSearch
      * @return
      */
-    UserApp searchUser(UserApp user);
+    Optional<UserApp> searchUser(SearchUser userSearch);
 
     /**
      * Search all users

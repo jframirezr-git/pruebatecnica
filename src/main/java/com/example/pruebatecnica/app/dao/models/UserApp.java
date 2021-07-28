@@ -1,8 +1,6 @@
 package com.example.pruebatecnica.app.dao.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class UserApp implements Serializable {
 
@@ -21,6 +21,7 @@ public class UserApp implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     private int year;
@@ -30,7 +31,8 @@ public class UserApp implements Serializable {
     @OneToMany(mappedBy = "userApp")
     private List<Product> products;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "ProfileId", referencedColumnName = "id")
     Profile profile;
+    */
 }
