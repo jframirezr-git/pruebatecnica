@@ -31,8 +31,10 @@ public class UserApp implements Serializable {
     @OneToMany(mappedBy = "userApp")
     private List<Product> products;
 
-   /* @ManyToOne
-    @JoinColumn(name = "ProfileId", referencedColumnName = "id")
-    Profile profile;
-    */
+    @OneToMany(mappedBy = "userApp")
+    private List<UpdateProducts> updateProducts;
+
+    @ManyToOne
+    @JoinColumn(name = "profileId", referencedColumnName = "id")
+    private Profile profile;
 }

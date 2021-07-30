@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -33,5 +34,8 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private UserApp userApp;
+
+    @OneToMany(mappedBy = "product")
+    private List<UpdateProducts> updateProductsList;
 
 }
