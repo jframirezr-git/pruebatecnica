@@ -1,13 +1,8 @@
 package com.example.pruebatecnica.app.service;
 
 
-import com.example.pruebatecnica.app.dao.dataModel.user.UserRequest;
-import com.example.pruebatecnica.app.dao.dataModel.user.UserResponse;
-import com.example.pruebatecnica.app.dao.dataModel.user.UserSearchRequest;
-import com.example.pruebatecnica.app.dao.dataModel.user.UserSearchResponse;
-import com.example.pruebatecnica.app.dao.models.UserApp;
+import com.example.pruebatecnica.app.dao.dataModel.user.*;
 
-import java.util.List;
 
 public interface UserService {
 
@@ -15,5 +10,5 @@ public interface UserService {
 
     UserSearchResponse searchUser(UserSearchRequest request);
 
-    List<UserApp> searchAllUser();
+    UserSearchAllResponse searchAllUser();
 }

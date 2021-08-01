@@ -40,11 +40,12 @@ public interface UserController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Response<Serializable>> searchUser(@Valid @RequestBody UserSearchRequest request);
 
-    @ApiOperation(value = "Buscar usuarios", notes = "Buscar usuarios", nickname = "BuscarUsuarios")
+    @ApiOperation(value = "Buscar usuarios", notes = "Buscar usuarios", nickname = "BuscarUsuarios",
+    produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponses({@ApiResponse(code = 201, message = ApiMessageHttp.API_HTTP_STATUS_201, response = Response.class),
             @ApiResponse(code = 502, message = ApiMessageHttp.API_HTTP_STATUS_502, response = Response.class),
             @ApiResponse(code = 206, message = ApiMessageHttp.API_HTTP_STATUS_206, response = Response.class)})
-    @GetMapping(path = "/user/getAll")
+    @GetMapping(path = "/user/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity searchAllUser();
 
 

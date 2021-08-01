@@ -1,10 +1,7 @@
 package com.example.pruebatecnica.app.dao.dataModel.user;
 
 import com.example.pruebatecnica.app.dao.dataModel.product.ProductDto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;

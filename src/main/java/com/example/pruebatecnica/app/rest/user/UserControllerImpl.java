@@ -4,7 +4,6 @@ import com.example.pruebatecnica.app.dao.dataModel.common.ErrorResponse;
 import com.example.pruebatecnica.app.dao.dataModel.common.Response;
 import com.example.pruebatecnica.app.dao.dataModel.user.UserRequest;
 import com.example.pruebatecnica.app.dao.dataModel.user.UserSearchRequest;
-import com.example.pruebatecnica.app.rest.user.UserController;
 import com.example.pruebatecnica.app.service.UserService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;

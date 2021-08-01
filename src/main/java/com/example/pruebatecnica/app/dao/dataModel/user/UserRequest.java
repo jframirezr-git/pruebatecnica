@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.*;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -26,8 +25,8 @@ public class UserRequest {
     @Max(value = 100, message = "Edad debe ser menor a 3 digitos")
     Integer year;
 
-    @ApiModelProperty(value = "Fecha de inscripcíon del producto", required = true, position = 3)
-    @NotNull(message = "La fecha no puede ser vacía")
-    Date startDate;
+    @ApiModelProperty(value = "Id del rol", required = true, position = 3)
+    @NotNull(message = "El id del rol no puede ser vacio")
+    Integer roleId;
 
 }

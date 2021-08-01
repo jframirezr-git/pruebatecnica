@@ -26,6 +26,10 @@ public class UserSpecification implements Specification<UserApp> {
             predicate.getExpressions().add(criteriaBuilder.equal(root.get("name"), searchUser.getName()));
         }
 
+        if(searchUser.getId() != null){
+            predicate.getExpressions().add(criteriaBuilder.equal(root.get("id"), searchUser.getId()));
+        }
+
         return predicate;
     }
 }

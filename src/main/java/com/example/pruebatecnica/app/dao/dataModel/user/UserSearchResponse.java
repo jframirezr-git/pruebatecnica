@@ -1,6 +1,5 @@
 package com.example.pruebatecnica.app.dao.dataModel.user;
 
-import com.example.pruebatecnica.app.dao.dataModel.user.UserDto;
 import lombok.*;
 
 import java.io.Serializable;

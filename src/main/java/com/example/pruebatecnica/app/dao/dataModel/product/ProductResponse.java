@@ -14,5 +14,5 @@ public class ProductResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Boolean response;
-    private Integer id;
+    private String message;
 }
