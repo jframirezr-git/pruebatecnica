@@ -8,4 +8,8 @@ public interface ProductService {
     ProductResponse saveProduct(ProductRequest request);
 
     SearchProductResponse searchProduct(SearchProductRequest request);
+
+    SearchAllProductsResponse searchAllProduct();
+
+    ProductResponse deleteProduct(ProductDeleteRequest request);
 }

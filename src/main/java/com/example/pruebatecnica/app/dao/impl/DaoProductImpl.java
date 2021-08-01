@@ -58,4 +58,9 @@ public class DaoProductImpl implements DaoProduct {
             throw new DataSourceException(ErrorCode.CODIGO_GENERAL_ERROR_INTERNO_BACKEND, ApiMessageHttp.DB);
         }
     }
+
+    @Override
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
+    }
 }

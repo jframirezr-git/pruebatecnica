@@ -4,7 +4,6 @@ import com.example.pruebatecnica.app.dao.DaoProduct;
 import com.example.pruebatecnica.app.dao.DaoUser;
 import com.example.pruebatecnica.app.dao.dataModel.product.*;
 import com.example.pruebatecnica.app.dao.dataModel.user.SearchUser;
-import com.example.pruebatecnica.app.dao.dataModel.user.UserDto;
 import com.example.pruebatecnica.app.dao.models.Product;
 import com.example.pruebatecnica.app.dao.models.UserApp;
 import com.example.pruebatecnica.app.service.ProductService;
@@ -12,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
@@ -34,8 +34,6 @@ public class ProductServiceImpl implements ProductService {
         Optional<UserApp> user = daoUser.searchUser(searchUser);
 
         SearchProduct searchProduct = SearchProduct.builder().name(request.getName())
-                .startDate(request.getStartDate())
-                .user(mapperFacade.map(user, UserDto.class))
                 .build();
         Optional<Product> product = daoProduct.searchProduct(searchProduct);
 
@@ -77,4 +75,48 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
+    @Override
+    public SearchAllProductsResponse searchAllProduct() {
+        ArrayList<ProductDto> productDtos = new ArrayList<>();
+
+        daoProduct.searchProducts().forEach(product -> {
+            ProductDto productDto = mapperFacade.map(product, ProductDto.class);
+            productDtos.add(productDto);
+        });
+
+        return SearchAllProductsResponse.builder()
+                .productDtoList(productDtos)
+                .build();
+    }
+
+    @Override
+    public ProductResponse deleteProduct(ProductDeleteRequest request) {
+
+        SearchUser searchUser = SearchUser.builder().id(request.getUserId()).build();
+
+        Optional<UserApp> user = daoUser.searchUser(searchUser);
+
+        SearchProduct searchProduct = SearchProduct.builder().id(request.getProductId()).build();
+
+        Optional<Product> product = daoProduct.searchProduct(searchProduct);
+
+        if(user.isEmpty() && product.isEmpty()){
+            return ProductResponse.builder().response(false)
+                    .message("El usuario o el producto no existen")
+                    .build();
+        }
+
+        if(user.get().getId() != product.get().getUserApp().getId()){
+            return ProductResponse.builder().response(false)
+                    .message("El usuario no puede eliminar este producto")
+                    .build();
+        }
+
+        daoProduct.deleteProduct(product.get());
+
+        return ProductResponse.builder().response(true)
+                .message("El producto ha sido eliminado con exito")
+                .build();
+
+    }
 }

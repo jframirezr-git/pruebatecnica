@@ -12,6 +12,8 @@ import java.util.Date;
 @Builder
 public class SearchProduct {
 
+    private Integer id;
+
     private Date startDate;
 
     private String name;

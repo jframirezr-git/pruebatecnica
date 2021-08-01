@@ -27,4 +27,10 @@ public interface DaoProduct {
      * @return
      */
     List<Product> searchProducts();
+
+    /**
+     * Delete product
+     * @return
+     */
+    void deleteProduct(Product product);
 }

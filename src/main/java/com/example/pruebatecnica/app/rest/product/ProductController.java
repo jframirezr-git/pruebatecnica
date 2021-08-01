@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -27,5 +28,13 @@ public interface ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Response<Serializable>> saveProduct(@Valid @RequestBody ProductRequest request);
+
+    @ApiOperation(value = "Buscar productos", notes = "Buscar productos", nickname = "BuscarProductos",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiResponses({@ApiResponse(code = 201, message = ApiMessageHttp.API_HTTP_STATUS_201, response = Response.class),
+            @ApiResponse(code = 502, message = ApiMessageHttp.API_HTTP_STATUS_502, response = Response.class),
+            @ApiResponse(code = 206, message = ApiMessageHttp.API_HTTP_STATUS_206, response = Response.class)})
+    @GetMapping(path = "/product/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity searchAllProduct();
 
 }

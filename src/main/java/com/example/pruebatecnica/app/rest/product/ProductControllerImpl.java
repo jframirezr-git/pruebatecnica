@@ -26,4 +26,10 @@ public class ProductControllerImpl implements ProductController{
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new Response<>(productService.saveProduct(request), new ErrorResponse()));
     }
+
+    @Override
+    public ResponseEntity searchAllProduct() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productService.searchAllProduct());
+    }
 }

@@ -31,8 +31,12 @@ public class ProductSpecification implements Specification<Product> {
             predicate.getExpressions().add(criteriaBuilder.equal(root.get("name"), searchProduct.getName()));
         }
 
-        if(searchProduct.getUser().getId() != null){
+        if(searchProduct.getUser() != null){
             predicate.getExpressions().add(criteriaBuilder.equal(root.get("user_id"), searchProduct.getUser().getId()));
+        }
+
+        if(searchProduct.getId() != null){
+            predicate.getExpressions().add(criteriaBuilder.equal(root.get("id"), searchProduct.getId()));
         }
 
         return predicate;

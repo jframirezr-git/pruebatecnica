@@ -10,10 +10,14 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductDeleteRequet {
+public class ProductDeleteRequest {
 
     @ApiModelProperty(value = "Id del producto", required = true, position = 1)
     @NotNull(message = "El id del producto no puede ser vacio")
     Integer productId;
+
+    @ApiModelProperty(value = "Id del usuario", required = true, position = 2)
+    @NotNull(message = "El id del usuario no puede ser vacio")
+    Integer userId;
 
 }
